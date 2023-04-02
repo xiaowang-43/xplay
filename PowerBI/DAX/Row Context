@@ -1,0 +1,32 @@
+LEARNING DAX PART 1: ROW CONTEXT
+
+Calculated columns : computered row by row
+
+The values are going to be different for each row, when writing DAX no specific context in which row the DAX are considering 
+The engine understands which row is scanning as it is a calculated column
+****Calculated Column always exists in Row Context
+The row context does not filter a table
+
+When you see a column reference: Table name + Column name, the column reference is valid when you have an active row context
+
+We have a filter context which carries out the filters, out of those filter context, we get a table, and the table has a row context that iterates/moves across all the rows of the visible table and execute an expression. 
+
+EG:
+Calculated Column: 
+Sales[Quantity] * Sales[Net Price]
+
+
+Measures: 
+SUMX(
+         Sales,
+         Sales[Quantity] * Sales[Net Price]
+)
+
+SUMX is an iterator, so by its nature, it scans the Sales table row by row, it introduces a Row Context of the Sale table, and during the scanning of the sales table, it knows which row it is in. Thus inside of the iteration, you can do the calculation row by row.
+
+If you want to write a measure that perform row by row, you need to scan the table row by row perform the calculation - which needs the current row - which is not available in a Measure. 
+
+=> introduce the concept of the current row -the row context using the Iterator
+
+
+***Measure is computered at the report level, no current row by default, if we want a current row, we need to introduce it.

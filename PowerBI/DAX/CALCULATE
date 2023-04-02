@@ -1,0 +1,36 @@
+DAX LEARNING PART 4: CALCULATE
+
+What CALCUATE does:
+
+There's an outer filter context,  and CALCULATE will generate a new filter context by merging the outer filter context with the new filter context which is defined by the next argument. 
+
+
++ Modifiers: KEEPFILTERS, ALL, REMOVEFILTERS, CROSSFILTER, USERELATIONSHIP
+Local modifiers - change only the way one filter is being applied;
+Global modifiers - change the behaviour of CALCULATE
+
+KEEPFILTERS: keep outer filters and add the new filter as a further one, it will show empty as there's no such data available.
+
+
+CALCULATE evaluation steps:
+	1. Evaluation of filter arguments;
+	2. Context transition;
+	3. Evaluation of CALCULATE modifiers;
+	4. Application of filter arguments an KEEPFILTERS
+	
+	
+	
+***Only filter Columns not the whole Table
+
+
+
+REMOVEFILTERS - remove all inside and outside context filters
+ALLSELECTED - remove inside (e.g., table filter) but keep the outside (e.g., filters)
+
+
+
+
+
+
+VALUES: restore the "Year"
+

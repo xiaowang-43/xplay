@@ -1,0 +1,28 @@
+DAX LEARNING PART 3: CONTEXT TRANSITION
+
+Context transition is one of the operations that  calculate performs, and when the context transition happens, calculation transforms any existing row context into filter context.  
+
+It is not easy to spot when the transition happens - for it to happen, you need to have a row context and you need to involve CALCULATE => trigger the context transition
+
+Measure:
+_Sales of big customers =
+SUMX(
+           Values(Customer[customerkey]),
+           VAR _CustomerSales =
+                              CALCUATE(
+                                              SUMX(Sales, Sales[Quantity] * Sales[Net Price])
+)
+
+VAR _Result =
+            IF(_CustomerSales <= 5000, _CustomerSales)
+
+RETURN
+_Result
+
+
+
+Context transition is when a Row Value becomes a Column Filter, it happens when you use a Measure inside an Iterator Function
+
+
+
+

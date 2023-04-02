@@ -1,0 +1,21 @@
+LEARNING DAX PART 2: FILTER CONTEXT
+
+SUMX(
+         Sales,  - SUMX iterate only the rows in Sales that visible in the current filter context
+         Sales[Quantity] * Sales[Net Price]
+)
+
+
+Power BI matrix creates filter context - a filter on the model (e.g. Brand) => then computer the measure
+
+The filter context can be created by Power BI - a filter that exists around your code
+
+The filter context is the filter that placed on the model and mostly is created by the visual by Power BI, and is follows the relationships
+
+
+Filter context is a table, it is a set of filters that contains one or more tables, each filter correspond to a table in the filter context
+
+
+
+
+
